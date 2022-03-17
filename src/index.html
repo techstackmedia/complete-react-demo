@@ -13,21 +13,7 @@
     <div id="root">not rendered</div>
     <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
-    <script>
-        // let counter = 0;
-        // Create an instance of h1 and div using createElement
-        const App = () => {
-            // counter++; // Don't do - don't have to keep track of state outside of the fn - all effects should be inside (wrong counter outside the function - side effect)
-            return React.createElement(
-                "div", {},
-                React.createElement("h1", {},
-                    "Adopt Me!")
-            );
-        };
-
-        // Create an instance of App
-        ReactDOM.render(React.createElement(App), document.getElementById("root"))
-    </script>
+    <script src="./App.js"></script>
 </body>
 
 </html>
