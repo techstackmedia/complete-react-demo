@@ -1,20 +1,9 @@
-- Install Prettier and do the configuration in .pretierrc
-Setting
-- Format on save
-- Go to setting and search require config prettier
-- It allows prettier not to run until there's a .prettierrc file in a project
+- npm install -D eslint@8.8.0 eslint-config-prettier@8.3.0
+- npx eslint src/App.js
+- Install eslint extension
+- use /* global React ReactDOM */ to fix React object warnings from eslint
+- rerun npx eslint src/App.js
 
-installation
-- npm install -D prettier
-
-Usage
-- npm run format
-
-
-.bin 
-- .bin is where all of your CLI client that you install to your node modules go into
-There's a prettier in .bin that references the .bin prettier
-- Now you can run it on all os (mac, windows, linux, etc)
-
-ESLint will check if I am doing accessibility correctly or am I using old APIs
-ESLint's --fix flag would be the closest thing.
+"format": "prettier --write \"src/**/*.{js,jsx}\"",
+"format:check": "prettier --check \"src/**/*.{js,jsx}\"", // check if you run prettier - In github action this will fail in build step - everyone should run prettier before checking in
+"lint": "eslint \"src/**/*.{js,jsx}\" --quiet"
