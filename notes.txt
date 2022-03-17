@@ -1,1 +1,6 @@
-npm init -y - initialize your project
+Code quality = prettier is more popular
+Prettier  - breack it into AST - break it down to its grammer - blow away any code styling
+
+In terminal
+npx prettier src/App.js
+npx prettier src/App.js --write (format code)
