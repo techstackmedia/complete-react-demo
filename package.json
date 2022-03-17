@@ -1,0 +1,23 @@
+{
+  "name": "complete-react-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "format": "prettier --write \"src/**/*.{js,jsx}\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/techstackmedia/complete-react-demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/techstackmedia/complete-react-demo/issues"
+  },
+  "homepage": "https://github.com/techstackmedia/complete-react-demo#readme",
+  "devDependencies": {
+    "prettier": "^2.6.0"
+  }
+}

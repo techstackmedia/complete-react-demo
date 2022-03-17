@@ -1,0 +1,20 @@
+- Install Prettier and do the configuration in .pretierrc
+Setting
+- Format on save
+- Go to setting and search require config prettier
+- It allows prettier not to run until there's a .prettierrc file in a project
+
+installation
+- npm install -D prettier
+
+Usage
+- npm run format
+
+
+.bin 
+- .bin is where all of your CLI client that you install to your node modules go into
+There's a prettier in .bin that references the .bin prettier
+- Now you can run it on all os (mac, windows, linux, etc)
+
+ESLint will check if I am doing accessibility correctly or am I using old APIs
+ESLint's --fix flag would be the closest thing.
