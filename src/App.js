@@ -5,8 +5,10 @@
 //       React.createElement("h2", {}, "Havanese"),
 //     ]);
 //   };
-  
+
+// let counter = 0
 //   const App = () => {
+// counter - side-effect because it is keeping tract of state outside of the render function (avoid it)
 //     return React.createElement("div", {}, [
 //       React.createElement("h1", {}, "Adopt Me!"),
 //       React.createElement(Pet),
@@ -14,9 +16,8 @@
 //       React.createElement(Pet),
 //     ]);
 //   };
-  
-//   ReactDOM.render(React.createElement(App), document.getElementById("root"));
 
+//   ReactDOM.render(React.createElement(App), document.getElementById("root"));
 
 // The one way data flow
 const Pet = (props) => {
