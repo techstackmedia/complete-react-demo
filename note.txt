@@ -1,0 +1,2 @@
+Prettier will take in your code and break it down into AST (abstract syntax tree) and reprint it out
+with its own set of grammar and blow away whatever code styling you put into it
