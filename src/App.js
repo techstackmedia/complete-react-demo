@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "react-dom"; // {render} - no run time cost (done by a stattic analysis)
+import { createRoot } from "react-dom"; // {render} - no run time cost (done by a stattic analysis)
 import Pet from "./Pet";
 
 const App = () => {
@@ -19,4 +19,5 @@ const App = () => {
   ]);
 };
 
-render(React.createElement(App), document.getElementById("root"));
+const root = createRoot(document.getElementById("root"));
+root.render(<App />);

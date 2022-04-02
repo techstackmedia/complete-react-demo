@@ -30,7 +30,5 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   },
-  "browserslist": [
-    "last 2 Chrome versions"
-  ]
+  "browserslist": "last 2 Chrome versions"
 }
