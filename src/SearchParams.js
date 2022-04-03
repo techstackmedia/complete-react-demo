@@ -1,30 +1,45 @@
-import { useState } from "react";
-const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
+import { useState, useEffect } from "react";
+import Pet from "./Pet";
+import useBreedList from "./useBreedList";
+
+// replace `const breeds = [];`
 
 const SearchParams = () => {
-  const [location, setLocation] = useState("Seattle, WA");
+  const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
+  const [location, setLocation] = useState("");
   const [animal, setAnimal] = useState("");
   const [breed, setBreed] = useState("");
-  const breeds = [];
+  const [pets, setPets] = useState([]);
+  const [breeds] = useBreedList(animal);
 
   const handleChangeEvent = (e) => {
     setLocation(e.target.value);
   };
 
-  // handleChangeEvent in the input (controlled) creates a new fn anytime the re-render fn gets called
-  // good for validation
+  useEffect(() => {
+    requestPets();
+  }, []);
+
+  async function requestPets() {
+    const res = await fetch(
+      `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
+    );
+    const json = await res.json();
+
+    setPets(json.pets);
+  }
+
   return (
     <div className="search-params">
-      <form onSubmit={handleChangeEvent}>
+      <form>
         {" "}
-        {/* capture the entire event and pull out eth out of the form and submit it */}
         <label htmlFor="location">
           Location {location}
           <input
             id="location"
-            // value={location}
+            value={location}
             placeholder="Location"
-            // onChange={handleChangeEvent}
+            onChange={handleChangeEvent}
           />
         </label>
         <label htmlFor="animal">
@@ -37,10 +52,6 @@ const SearchParams = () => {
               setBreed("");
             }}
             onBlur={(e) => {
-              {
-                /* use both onChange and onBlur event */
-                /* when browsers navigates away from a select sth or via a different tools like a screen reader / accessibilty tool, they will not fire the change event sth*/
-              }
               setAnimal(e.target.value);
               setBreed("");
             }}
@@ -56,7 +67,7 @@ const SearchParams = () => {
         <label htmlFor="breed">
           Breed
           <select
-            disabled={!breeds.length}
+            // disabled={!breeds.length}
             id="breed"
             value={breed}
             onChange={(e) => setBreed(e.target.value)}
@@ -72,6 +83,14 @@ const SearchParams = () => {
         </label>
         <button>Submit</button>
       </form>
+      {pets.map((pet) => (
+        <Pet
+          name={pet.name}
+          animal={pet.animal}
+          breed={pet.breed}
+          key={pet.id}
+        />
+      ))}
     </div>
   );
 };

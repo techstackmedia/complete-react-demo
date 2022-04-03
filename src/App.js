@@ -1,4 +1,4 @@
-import { createRoot } from "react-dom";
+import { createRoot } from "react-dom/client";
 import SearchParams from "./SearchParams";
 import { createRoot } from "react-dom"; // {render} - no run time cost (done by a stattic analysis)
 import Pet from "./Pet";
