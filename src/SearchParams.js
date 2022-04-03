@@ -1,25 +1,18 @@
 import { useState, useEffect } from "react";
-// import { useEffect } from "react/cjs/react.production.min";
 import Pet from "./Pet";
+import useBreedList from "./useBreedList";
 
 const SearchParams = () => {
   const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
-  const [location, setLocation] = useState("Seattle, WA");
+  const [location, setLocation] = useState("");
   const [animal, setAnimal] = useState("");
   const [breed, setBreed] = useState("");
   const [pets, setPets] = useState([]);
-  const breeds = [];
+  const [breeds] = useBreedList(animal);
 
   const handleChangeEvent = (e) => {
     setLocation(e.target.value);
   };
-  // this is a fn (below) that will be called outside of the render
-  // i.e. registering a fn to be called later
-  // array of dependency variables
-  // [breed]
-  // call the api whenever breed changes
-  // let's call it once after the first render - []
-  // if u give it nothing i.e no array - if anything changes, animal, breed pet call it again
 
   useEffect(() => {
     requestPets();
@@ -34,6 +27,19 @@ const SearchParams = () => {
     setPets(json.pets);
   }
 
+  useEffect(() => {
+    requestPets();
+  }, []);
+
+  async function requestPets() {
+    const res = await fetch(
+      `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
+    );
+    const json = await res.json();
+
+    setPets(json.pets);
+  }
+  
   return (
     <div className="search-params">
       <form>
