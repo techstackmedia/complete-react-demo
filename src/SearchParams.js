@@ -2,9 +2,8 @@ import { useState, useEffect } from "react";
 // import { useEffect } from "react/cjs/react.production.min";
 import Pet from "./Pet";
 
-const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
-
 const SearchParams = () => {
+  const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
   const [location, setLocation] = useState("Seattle, WA");
   const [animal, setAnimal] = useState("");
   const [breed, setBreed] = useState("");
