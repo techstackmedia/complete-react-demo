@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 import Pet from "./Pet";
 import useBreedList from "./useBreedList";
 
-// replace `const breeds = [];`
-
 const SearchParams = () => {
   const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
   const [location, setLocation] = useState("");
@@ -29,6 +27,19 @@ const SearchParams = () => {
     setPets(json.pets);
   }
 
+  useEffect(() => {
+    requestPets();
+  }, []);
+
+  async function requestPets() {
+    const res = await fetch(
+      `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
+    );
+    const json = await res.json();
+
+    setPets(json.pets);
+  }
+  
   return (
     <div className="search-params">
       <form>
